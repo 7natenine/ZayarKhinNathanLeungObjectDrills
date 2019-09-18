@@ -35,15 +35,49 @@ let person1 = {
 
 let person2 = {
     name : 'Thomas',
-    jobTitle : 'train' 
+    jobTitle : 'train', 
+    boss: person1.name
 }
 
 let person3 = {
     name : 'Dora',
-    jobTitle : 'explorer' 
+    jobTitle : 'explorer',
+    boss: person1.name 
 }
 
 let personList =[person1, person2, person3];
 personList.forEach((person) => {
-    console.log(person.jobTitle, person.name);
+    if (person.boss) {
+        console.log(`${person.jobTitle} ${person.name} reports to ${person.boss}.`);
+    } else {
+        console.log(`${person.jobTitle} ${person.name} doesn't report to anybody.`);
+    }
 });
+
+const encodedMessage = 'craft block argon meter bells brown croon droop'
+let cipher = {
+    a: 2,
+    b: 3,
+    c: 4,
+    d: 5
+}
+
+function decode(str) {
+    let result = [];
+    let words = str.split(' ');
+    for (let i=0; i < words.length; i++) {
+        let firstLetter = words[i][0];
+        for (let j=0; j< Object.keys(cipher).length; j++) {
+            if (firstLetter == Object.keys(cipher)[j]) {
+                result.push(words[i][cipher[Object.keys(cipher)[j]]-1]);
+            }
+        }
+        result.push(' ');
+    };
+}
+console.log(decode(encodedMessage));
+
+// function decodeWords(messageString, decode) {
+
+// }
+
